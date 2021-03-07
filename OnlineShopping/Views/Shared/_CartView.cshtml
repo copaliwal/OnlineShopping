@@ -1,0 +1,34 @@
+﻿@using System.Security.Claims;
+
+<ul class="nav navbar-nav navbar-right">
+    <li>
+        <a href="/Cart/Index" class="btn btn-secondary">
+            Cart <span id="bstCount" class="badge badge-light">0</span>
+        </a>
+    </li>
+</ul>
+
+
+<script type="text/javascript">
+
+    function GetCount(userId) {
+        $.ajax({
+            url: '/api/CartService/GetCount?userId=' + userId,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                $("#bstCount").html(response);
+            },
+            error: function (ex) {
+                alert(ex.responseText);
+            }
+        });
+    }
+
+    window.onload = function () {
+        var userId = '@User.FindFirstValue(ClaimTypes.NameIdentifier)';
+        if (userId != '') {
+            GetCount(userId);
+        }
+    }
+</script>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<OnlineShopping.Models.Cart>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewBag.Num = 1;
+}
+
+<h3>Cart Items</h3>
+<hr />
+@if (Model.Any())
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width:65px;">
+                    Sr.No.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+                </th>
+                <th style="width:75px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @ViewBag.Num
+                        @{
+                            ViewBag.Num++;
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPrice)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Remove", "Remove", new { cartId = item.CartId }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="2" class="text-center">Total</td>
+                <td>
+                    <b>@Model.Sum(p => p.Quantity)</b>
+                </td>
+                <td>
+                    <b>@Model.Sum(p => p.Product.Price)</b>
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-right">
+        @Html.ActionLink("Make Payment", "Create", "Orders", null, new { @class = "btn btn-primary" })
+    </div>
+}
+else
+{
+    <div class="row">
+        <h5>No item in Cart !!!</h5>
+    </div>
+}

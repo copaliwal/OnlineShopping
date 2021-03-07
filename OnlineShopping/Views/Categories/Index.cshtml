@@ -1,0 +1,12 @@
+﻿@model IEnumerable<OnlineShopping.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Categoris</h2>
+<hr />
+
+@Html.Partial("_CategoriesPanel", Model)
+
+

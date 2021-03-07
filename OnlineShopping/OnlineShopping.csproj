@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-OnlineShopping-84EBA224-41DA-45B1-BEDC-82B79CF98535</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\CategoryRepository.cs" />
+    <Compile Remove="Models\ICategoryRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\Applelaptop12132213.JPG" />
+    <None Include="wwwroot\Images\imafbgqzhjhmthh2.jpeg" />
+    <None Include="wwwroot\Images\imafd3nzffhhgsqz.jpeg" />
+    <None Include="wwwroot\Images\imafe6f78hur4jbh.jpeg" />
+    <None Include="wwwroot\Images\imaff848szekvdsz.jpeg" />
+    <None Include="wwwroot\Images\imaffm49zzfgw3ty.jpeg" />
+    <None Include="wwwroot\Images\imafhyabpggagngr.jpeg" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Primary\Models\" />
+  </ItemGroup>
+
+</Project>

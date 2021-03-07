@@ -1,0 +1,52 @@
+﻿@model IEnumerable<OnlineShopping.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Products</h3>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Add New Product", "Create")
+}
+
+<hr />
+<div class="card-deck">
+    @if (Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            @Html.Partial("_ProductItem", item)
+        }
+    }
+    else
+    {
+        <h3>No Products found for this category!!</h3>
+    }
+</div>
+
+
+<script type="text/javascript">
+
+    function AddtoBasket(productId, price) {
+        var userName = '@User.Identity.Name';
+        if (userName != '') {
+            $.ajax({
+                url: '/api/Baskets?userName=' + userName + '&productId=' + productId,
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    alert("Product added to Cart successfully.");
+                    GetCount(userName);
+                },
+                error: function (ex) {
+                    alert(ex.responseText);
+                }
+            });
+        }
+        else {
+            alert("You are not loged in. Please login first.");
+        }
+    }
+
+</script>
+

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<OnlineShopping.Models.Category>
+
+<div class="card-deck">
+    @if (Model.Any())
+    {
+        @foreach (var category in Model)
+        {
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@category.Name</h5>
+                        <p class="card-text">
+                            @Html.ActionLink("Find More", "Index", "Products", new { Id = category.CategoryId }, new { @class = "btn btn-primary" })
+                        </p>
+                    </div>
+                </div>
+        }
+    }
+</div>
